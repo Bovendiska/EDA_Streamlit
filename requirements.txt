@@ -3,3 +3,4 @@ matplotlib
 seaborn
 pandas
 ydata-profiling
+streamlit-pandas-profiling

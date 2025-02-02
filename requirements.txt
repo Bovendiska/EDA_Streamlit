@@ -4,4 +4,4 @@ seaborn==0.11.2
 pandas==1.4.2
 ydata-profiling==4.0.0
 streamlit-pandas-profiling==0.0.7
-setuptools>=49.6.0
+setuptools>=60.0.0

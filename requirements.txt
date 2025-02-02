@@ -4,3 +4,4 @@ seaborn
 pandas
 ydata-profiling
 streamlit-pandas-profiling
+openpyxl

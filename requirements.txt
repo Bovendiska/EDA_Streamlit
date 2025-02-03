@@ -6,3 +6,4 @@ ydata-profiling
 setuptools
 numpy
 streamlit_pandas_profiling
+openpyxl

@@ -34,7 +34,11 @@ def introduction():
 def upload_file():
     uploaded_file = st.file_uploader("Unggah dataset Anda", type=["csv", "xlsx"])
     if uploaded_file is not None:
-        return pd.read_csv(uploaded_file) if uploaded_file.name.endswith(".csv") else pd.read_excel(uploaded_file)
+        if uploaded_file.name.endswith(".csv"):
+            # Menambahkan encoding pada pd.read_csv untuk menghindari error
+            return pd.read_csv(uploaded_file, encoding="ISO-8859-1")  
+        else:
+            return pd.read_excel(uploaded_file)
     return None
 
 def profiling(df):

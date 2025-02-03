@@ -2,7 +2,7 @@ streamlit==1.14.0
 matplotlib==3.5.1
 seaborn==0.11.2
 pandas==1.4.2
-ydata-profiling==4.6.5
+ydata-profiling==4.12.2
 streamlit-pandas-profiling==0.0.7
 setuptools>=49.6.0
 numpy==1.21.5

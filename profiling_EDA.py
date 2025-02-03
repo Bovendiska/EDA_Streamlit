@@ -35,8 +35,8 @@ def upload_file():
     uploaded_file = st.file_uploader("Unggah dataset Anda", type=["csv", "xlsx"])
     if uploaded_file is not None:
         if uploaded_file.name.endswith(".csv"):
-            # Menambahkan encoding pada pd.read_csv untuk menghindari error
-            return pd.read_csv(uploaded_file, encoding="ISO-8859-1")  
+            # Menambahkan parameter quotechar untuk tanda kutip
+            return pd.read_csv(uploaded_file, encoding="ISO-8859-1", sep=";", quotechar='"')
         else:
             return pd.read_excel(uploaded_file)
     return None

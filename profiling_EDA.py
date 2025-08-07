@@ -41,11 +41,12 @@ def upload_file():
                 # Mengintip baris pertama untuk mendeteksi delimiter
                 sample = uploaded_file.read(1024).decode('ISO-8859-1')
                 uploaded_file.seek(0) # Kembali ke awal file setelah membaca sample
-
                 try:
                     # Menggunakan Sniffer untuk menemukan delimiter
                     dialect = csv.Sniffer().sniff(sample, delimiters=',;')
                     separator = dialect.delimiter            
+                except csv.Error:
+                    separator = ','
                 return pd.read_csv(uploaded_file, encoding="ISO-8859-1", sep=separator)
             else:
                 return pd.read_excel(uploaded_file)
@@ -177,6 +178,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 

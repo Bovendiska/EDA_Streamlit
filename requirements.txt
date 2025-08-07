@@ -7,5 +7,3 @@ setuptools
 numpy
 streamlit_pandas_profiling
 openpyxl
-csv
-xlsx

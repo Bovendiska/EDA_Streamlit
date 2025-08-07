@@ -32,24 +32,31 @@ def introduction():
     )
 
 def upload_file():
+    """Fungsi untuk mengunggah file CSV atau Excel dengan deteksi separator otomatis."""
     uploaded_file = st.file_uploader("Unggah dataset Anda", type=["csv", "xlsx"])
     if uploaded_file is not None:
         try:
-            if uploaded_file.name.endwith('.csv'):
+            if uploaded_file.name.endswith(".csv"):
+                # --- NEW: Logika untuk deteksi separator otomatis ---
+                # Mengintip baris pertama untuk mendeteksi delimiter
                 sample = uploaded_file.read(1024).decode('ISO-8859-1')
-                uploaded_file.seek(0)
-                try :
-                    dialect = csv.Sniffer().sniff(sample, delimiters = ',;')
+                uploaded_file.seek(0) # Kembali ke awal file setelah membaca sample
+
+                try:
+                    # Menggunakan Sniffer untuk menemukan delimiter
+                    dialect = csv.Sniffer().sniff(sample, delimiters=',;')
                     separator = dialect.delimiter
-                    st.sidebar.success(f'Separator Terdeteksi : {separator}')
-                except:
-                    st.sidebar.warning('Tidak dapat mendeteksi separator, mencoba separator default (,)')
+                    st.sidebar.success(f"Separator terdeteksi: '{separator}'")
+                except csv.Error:
+                    # Jika Sniffer gagal, default ke koma
+                    st.sidebar.warning("Tidak dapat mendeteksi separator, mencoba dengan koma (',').")
                     separator = ','
-                return pd.read_csv(uploaded_file, encoding='ISO-8859-1', sep = separator)
+                
+                return pd.read_csv(uploaded_file, encoding="ISO-8859-1", sep=separator)
             else:
                 return pd.read_excel(uploaded_file)
         except Exception as e:
-            st.error(f'Terjadi error saat membaca file {e}')
+            st.error(f"Terjadi error saat membaca file: {e}")
     return None
         
 def profiling(df):
@@ -176,4 +183,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

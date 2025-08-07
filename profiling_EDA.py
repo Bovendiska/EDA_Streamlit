@@ -46,12 +46,7 @@ def upload_file():
                     # Menggunakan Sniffer untuk menemukan delimiter
                     dialect = csv.Sniffer().sniff(sample, delimiters=',;')
                     separator = dialect.delimiter
-                    st.sidebar.success(f"Separator terdeteksi: '{separator}'")
-                except csv.Error:
-                    # Jika Sniffer gagal, default ke koma
-                    st.sidebar.warning("Tidak dapat mendeteksi separator, mencoba dengan koma (',').")
-                    separator = ','
-                
+                except csv.Error:              
                 return pd.read_csv(uploaded_file, encoding="ISO-8859-1", sep=separator)
             else:
                 return pd.read_excel(uploaded_file)
@@ -183,6 +178,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 

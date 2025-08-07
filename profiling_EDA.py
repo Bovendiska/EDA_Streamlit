@@ -23,7 +23,7 @@ def introduction():
         **👨‍💻 Tentang Saya**  
         - **Nama:** Bonaventura Dimas S.K  
         - **Universitas:** Gunadarma University  
-        - **Keahlian:** Python, Machine Learning, Streamlit, NLP, SQL, Excel, Tableu/Looker Studio  
+        - **Keahlian:** Python, Machine Learning, Streamlit, NLP, SQL, Excel, PowerBI/Looker Studio  
         - **Deskripsi:** Saya merupakan data antusias dan juga machine learning antusias
         ---
 
@@ -178,6 +178,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
